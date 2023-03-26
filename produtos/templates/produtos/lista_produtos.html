@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lista de Produtos{% endblock %}
+
+{% block main %}
+<h1>Lista de produtos</h1>
+<nav>
+    <a href="{% url 'core:index' %}">Home</a>
+    <a href="{% url 'produtos:novo_produto' %}">Novo produto</a>
+</nav>
+
+{% for produto in produtos %}
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'produtos:detalhe_produto' produto.id %}">{{ produto.nome_produto }}</a>
+                <a href="{% url 'produtos:editar_produto' produto.id %}">Editar</a>
+                <a href="{% url 'produtos:excluir_produto' produto.id %}">Excluir</a>
+            </li>
+        </ul>
+    </nav>
+{% endfor %}
+
+{% endblock %}

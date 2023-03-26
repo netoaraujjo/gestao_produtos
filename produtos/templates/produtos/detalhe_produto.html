@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detalhe do produto{% endblock %}
+
+{% block main %}
+<h1>Detalhe do produto</h1>
+<nav>
+    <a href="{% url 'produtos:lista_produtos' %}">Listar produtos</a>
+    <a href="{% url 'produtos:editar_produto' produto.id %}">Editar</a>
+    <a href="{% url 'produtos:excluir_produto' produto.id %}">Excluir</a>
+</nav>
+
+<div>
+      <p>Nome: {{ produto.nome_produto }}</p>
+      <p>Quantidade em estoque: {{ produto.quantidade_estoque }}</p>
+      <p>Estoque crítico: {{ produto.quantidade_critica }}</p>
+      <p>Número de série: {{ produto.numero_serie }}</p>
+      <p>Marca: {{ produto.marca }}</p>
+      <p>Modelo: {{ produto.modelo }}</p>
+      <p>Foto:</p>
+      <img src="{{MEDIA_URL}}{{produto.foto}}" alt="Foto do produto" />
+</div>
+{% endblock %}
